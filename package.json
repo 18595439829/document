@@ -8,12 +8,13 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "babel-runtime": "^6.26.0",
     "core-js": "^2.6.5",
     "fonts": "0.0.2",
-    "iview": "^3.4.2",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
-    "url-loader": "^2.0.0",
+    "markdown-it": "^8.4.2",
+    "mavon-editor": "^2.7.5",
     "vue": "^2.6.10",
     "vue-router": "^3.0.6"
   },
@@ -24,6 +25,7 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "text-loader": "0.0.1",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
