@@ -1,25 +1,70 @@
 <template>
-  <div id="app">
-    <router-view></router-view>
-  </div>
+  <div ref="content" id="app">
+      <Menu class="meun" :menu="menuData"></Menu>
+      <div class="content">
+        <router-view></router-view>
+      </div>
+    </div>
 </template>
 
 <script>
+import PerfectScrollbar from 'perfect-scrollbar';
+import Menu from "@/components/Menu.vue";
 export default {
-  name: 'app',
+  name: "app",
   components: {
-  }
-}
+    Menu
+  },
+  data() {
+    return {
+      menuData: [
+        {
+          name: "home",
+          path: "/"
+        },
+        {
+          name: "test",
+          path: "test"
+        },
+        {
+          name: "markdown",
+          path: "markdown"
+        },
+        {
+          name: "nginx",
+          path: "nginx"
+        }
+      ]
+    };
+  },
+  mounted() {
+    this.ps = new PerfectScrollbar(this.$refs.content);
+  },
+  beforeDestroy() {
+    this.ps.destroy();
+    this.ps = null;
+  },
+};
 </script>
 
-<style>
+<style lang="less">
+@common-color: #0769fd;
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   width: 100vw;
   height: 100vh;
+  position: relative;
+  display: flex;
+}
+#app .meun {
+  width: 100px;
+}
+.content {
+  flex: 1;
+  width: 100%;
 }
 pre {
   display: block;
@@ -34,5 +79,9 @@ pre {
   overflow-x: auto;
   color: #abb2bf;
   background: #282c34;
+}
+a {
+  text-decoration-line: none;
+  color: @common-color;
 }
 </style>

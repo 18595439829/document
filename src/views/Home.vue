@@ -4,12 +4,6 @@
       <mavon-editor
         class="md"
         :value="value"
-        :subfield="false"
-        :defaultOpen="'preview'"
-        :toolbarsFlag="false"
-        :editable="false"
-        :scrollStyle="true"
-        :ishljs="true"
       ></mavon-editor>
     </div>
   </div>
@@ -27,7 +21,11 @@ export default {
 };
 </script>
 <style lang="less" module>
+
 .container {
   display: flex;
+  .content {
+    padding: 20px;
+  }
 }
 </style>

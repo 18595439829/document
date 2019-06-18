@@ -17,5 +17,15 @@ export default new Router({
       name: 'test',
       component: Test,
     },
+    {
+      path: '/markdown',
+      name: 'markdown',
+      component: () => import ('@/docs/markdown.md'),
+    },
+    {
+      path: '/nginx',
+      name: 'nginx',
+      component: () => import ('@/docs/nginx.md')
+    },
   ],
 });
