@@ -13,6 +13,8 @@
 - 第六步:刷新浏览器,项目启动成功;
 
 ## 进阶
+
+### 监听不同端口部署不同项目
 1.在同一域名下监听不同端口,启动不同项目;
 
 - 第一步:将不同的项目打包dist,并重命名为app1,   app2 ...
@@ -95,4 +97,41 @@ location = /app2/index.html {
 
 
 需要几个项目复制几个,修改为对应的项目名称
-- 第四步: 使用指令nginx -s reload重启nginx,如果不行,使用nginx -s stop  停止nginx  ,然后再启动
+- 第四步: nginx -s reload 重载nginx配置文件,
+          nginx -s stop  停止nginx,
+          nginx -s stop  重启nginx
+
+
+###监听同一端口,不同路径部署多个项目
+1. 将vue项目配置文件下的publicPath修改为: '/项目名称/'
+```
+// vue.config.js
+module.exports = {
+  publicPath: `/app1/`,  // 打包后的文件路径
+  outputDir: `dist/app1`, // 打包文件放置在dist文件夹下的app1文件夹
+};
+
+```
+2. 配置nginx.conf文件,路径同上
+```
+server {
+      listen      8001;   
+     #   监听的端口号;
+      server_name  localhost;
+     #  服务器地址:可以使ip,对应hosts文件
+     root  /html/;   #文件根路径   
+
+     #  第一个项目app1
+     location ^~/app1/ {
+         try_files $uri /app1/index.html;
+          #访问根路径下的app1/index.html入口文件
+     }
+
+     #第二个项目app2
+     location ^~/app2/ {
+         try_files $uri /app2/index.html;
+          #访问根路径下的app2/index.html入口文件
+     }
+  }
+```
+3. 其他操作同上
