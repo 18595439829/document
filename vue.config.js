@@ -1,6 +1,8 @@
 module.exports = {
   css: {
     modules: true,
+    publicPath: `/document/`,
+    outputDir: `dist/document`,
     loaderOptions: {
       // 给 less-loader 传递选项
       less: {
