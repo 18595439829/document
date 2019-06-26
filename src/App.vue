@@ -1,40 +1,45 @@
 <template>
-  <div ref="content" id="app">
-      <Menu class="meun" :menu="menuData"></Menu>
-      <div class="content">
-        <router-view></router-view>
-      </div>
+  <div id="app" ref="content">
+    <Menu class="meun" :menu="menuData" />
+    <div class="content">
+      <router-view />
     </div>
+  </div>
 </template>
 
 <script>
 import PerfectScrollbar from 'perfect-scrollbar';
-import Menu from "@/components/Menu.vue";
+import Menu from '@/components/Menu.vue';
+
 export default {
-  name: "app",
+  name: 'App',
   components: {
-    Menu
+    Menu,
   },
   data() {
     return {
       menuData: [
         {
-          name: "home",
-          path: "/"
+          name: 'home',
+          path: '/',
         },
         {
-          name: "test",
-          path: "test"
+          name: 'test',
+          path: 'test',
         },
         {
-          name: "markdown",
-          path: "markdown"
+          name: 'markdown',
+          path: 'markdown',
         },
         {
-          name: "nginx",
-          path: "nginx"
-        }
-      ]
+          name: 'nginx',
+          path: 'nginx',
+        },
+        {
+          name: 'fileDownload',
+          path: 'fileDownload',
+        },
+      ],
     };
   },
   mounted() {

@@ -1,19 +1,16 @@
 <template>
   <div :class="$style['container']">
     <div :class="$style['content']">
-      <mavon-editor
-        class="md"
-        :value="value"
-      ></mavon-editor>
+      <mavon-editor class="md" :value="value" />
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: "Home",
+  name: 'Home',
   data() {
     return {
-      value: '### test'
+      value: '### test',
     };
   },
   mounted() {
@@ -29,29 +26,27 @@ export default {
   },
   methods: {
     getFunc(num, arr) {
-      let big = [];
-      let small = []
+      const big = [];
+      const small = [];
       arr.forEach((item, index) => {
         if (item > num) {
           big.push({
             value: item,
-            index: index,
-          })
+            index,
+          });
         } else if (item < num) {
           small.push({
             value: item,
-            index: index,
-          })
+            index,
+          });
         }
-      })
-      return [small[small.length-1],big[0]]
-    }
-  }
-
+      });
+      return [small[small.length - 1], big[0]];
+    },
+  },
 };
 </script>
 <style lang="less" module>
-
 .container {
   display: flex;
   .content {

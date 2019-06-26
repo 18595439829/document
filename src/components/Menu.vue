@@ -2,10 +2,10 @@
   <div :class="$style['container']">
     <div
       v-for="(item, index) in menuData"
-      :class="$style['meuns']"
       :key="index"
+      :class="$style['meuns']"
     >
-      <div :class="$style['panel']"></div>
+      <div :class="$style['panel']" />
       <div
         :class="{ name: true, menuClick: index === menuIndex ? true : false }"
         @click="meunClick(item.path, index)"
@@ -17,37 +17,37 @@
 </template>
 <script>
 export default {
-  name: "Menu",
+  name: 'Menu',
   props: {
     menu: {
       type: Array,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
       menuData: this.menu,
-      menuIndex: 0
+      menuIndex: 0,
     };
   },
   watch: {
     menu(v) {
       this.menuData = v;
-    }
+    },
+  },
+  mounted() {
+    this.menuData.forEach((item, index) => {
+      if (item.name === this.$route.name) {
+        this.menuIndex = index;
+      }
+    });
   },
   methods: {
     meunClick(path, index) {
       this.menuIndex = index;
       this.$router.push(path);
-    }
+    },
   },
-  mounted() {
-      this.menuData.forEach((item, index) => {
-      if (item.name === this.$route.name) {
-        this.menuIndex = index;
-      }
-    })
-  }
 };
 </script>
 <style lang="less">
@@ -85,4 +85,3 @@ export default {
   }
 }
 </style>
-

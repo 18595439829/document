@@ -20,12 +20,17 @@ export default new Router({
     {
       path: '/markdown',
       name: 'markdown',
-      component: () => import ('@/docs/markdown.md'),
+      component: () => import('@/docs/markdown.md'),
     },
     {
       path: '/nginx',
       name: 'nginx',
-      component: () => import ('@/docs/nginx.md')
+      component: () => import('@/docs/nginx.md'),
+    },
+    {
+      path: '/fileDownload',
+      name: 'fileDownload',
+      component: () => import('@/docs/vue/file.md'),
     },
   ],
 });
