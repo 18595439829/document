@@ -1,6 +1,6 @@
 module.exports = {
-  publicPath: `/document/`,
-  outputDir: `dist/document`,
+  publicPath: '/document/',
+  outputDir: 'dist/document',
   css: {
     modules: true,
     loaderOptions: {
@@ -8,25 +8,24 @@ module.exports = {
       less: {
         // @/ 是 src/ 的别名
         // 所以这里假设你有 `src/css/main.less` 这个文件
-        data: `@import "src/css/main.less";`,
-        localIdentName: "[name]-[hash]",
-        javascriptEnabled: true
-      }
-    }
+        data: '@import "src/css/main.less";',
+        localIdentName: '[name]-[hash]',
+        javascriptEnabled: true,
+      },
+    },
   },
-  configureWebpack: config => {
+  configureWebpack: (config) => {
     config.module.rules.push({
-      // 处理jquery
+      // 处理markdown
       test: /\.md$/,
       use: [
         {
-          loader: "vue-loader"
+          loader: 'vue-loader',
         },
         {
-          loader: require.resolve("./src/common/markdownLoader")
-        }
+          loader: require.resolve('./src/common/markdownLoader'),
+        },
       ],
-    },
-    );
-  }
+    });
+  },
 };
