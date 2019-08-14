@@ -1,5 +1,6 @@
 <template>
   <div id="app" ref="content">
+    <Progress ref="Progress" />
     <Menu class="meun" :menu="menuData" />
     <div class="content">
       <router-view />
@@ -9,12 +10,14 @@
 
 <script>
 import PerfectScrollbar from 'perfect-scrollbar';
+import Progress from '@/components/progress/Progress.vue';
 import Menu from '@/components/Menu.vue';
 
 export default {
   name: 'App',
   components: {
     Menu,
+    Progress,
   },
   data() {
     return {

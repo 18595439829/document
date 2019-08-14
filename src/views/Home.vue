@@ -3,9 +3,18 @@
     <div :class="$style['content']">
       <mavon-editor class="md" :value="value" />
     </div>
+    <Upload accept=".xls, xlsx" />
+    <button @click="msgbox">
+      点击弹窗
+    </button>
+    <button @click="progress">
+      点击进度条
+    </button>
   </div>
 </template>
 <script>
+import { setTimeout } from 'timers';
+
 export default {
   name: 'Home',
   data() {
@@ -25,6 +34,27 @@ export default {
     // }
   },
   methods: {
+    msgbox() {
+      this.$msgbox({
+        title: '温馨提示',
+        cancel: '取消',
+        content: '这里是消息弹出内容',
+        confirm: '确定按钮',
+        className: 'pop-custom',
+      }).then(() => {
+        console.log('我点击了确定按钮');
+      }).catch((err) => {
+        console.log('error');
+      });
+    },
+    progress() {
+      this.$toast();
+      console.log(this.$root.$children[0].$refs.Progress);
+      this.$root.$children[0].$refs.Progress.start();
+      setTimeout(() => {
+        this.$root.$children[0].$refs.Progress.finish();
+      }, 2000);
+    },
     getFunc(num, arr) {
       const big = [];
       const small = [];
