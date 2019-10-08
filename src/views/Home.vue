@@ -3,6 +3,7 @@
     <div :class="$style['content']">
       <mavon-editor class="md" :value="value" />
     </div>
+    <Test />
     <Upload accept=".xls, xlsx" />
     <button @click="msgbox">
       点击弹窗
@@ -13,13 +14,16 @@
   </div>
 </template>
 <script>
-import { setTimeout } from 'timers';
+import Test from '@/docs/test.md';
 
 export default {
   name: 'Home',
+  components: {
+    Test,
+  },
   data() {
     return {
-      value: '### test',
+      value: '### test ### a',
     };
   },
   mounted() {
@@ -43,7 +47,7 @@ export default {
         className: 'pop-custom',
       }).then(() => {
         console.log('我点击了确定按钮');
-      }).catch((err) => {
+      }).catch(() => {
         console.log('error');
       });
     },

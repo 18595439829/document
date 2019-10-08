@@ -57,24 +57,27 @@ export default {
       this.show = false;
     },
     addClass(obj, cls) {
-      const obj_class = obj.className;
-      const blank = obj_class != '' ? ' ' : '';
-      const added = obj_class + blank + cls;
+      const objClass = obj.className;
+      const blank = objClass !== '' ? ' ' : '';
+      const added = objClass + blank + cls;
+      // eslint-disable-next-line no-param-reassign
       obj.className = added;
     },
     removeClass(obj, cls) {
-      let obj_class = ` ${obj.className} `;
-      obj_class = obj_class.replace(/(\s+)/gi, ' ');
-      let removed = obj_class.replace(` ${cls} `, ' ');
+      let objClass = ` ${obj.className} `;
+      objClass = objClass.replace(/(\s+)/gi, ' ');
+      let removed = objClass.replace(` ${cls} `, ' ');
       removed = removed.replace(/(^\s+)|(\s+$)/g, '');
+      // eslint-disable-next-line no-param-reassign
       obj.className = removed; // 替换原来的 class.
     },
     hasClass(obj, cls) {
-      const obj_class = obj.className;
-      const obj_class_lst = obj_class.split(/\s+/);
+      const objClass = obj.className;
+      const objClassLst = objClass.split(/\s+/);
       let x = 0;
-      for (x in obj_class_lst) {
-        if (obj_class_lst[x] == cls) {
+      // eslint-disable-next-line no-restricted-syntax
+      for (x in objClassLst) {
+        if (objClassLst[x] === cls) {
           return true;
         }
       }

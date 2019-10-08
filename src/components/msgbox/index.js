@@ -2,8 +2,8 @@ import Vue from 'vue';
 import msgBoxComponent from './MsgBox.vue';
 
 const msgBox = (options = {}) => {
-  const msgBoxConstructor = Vue.extend(msgBoxComponent);
-  const instance = new msgBoxConstructor({
+  const MsgBoxConstructor = Vue.extend(msgBoxComponent);
+  const instance = new MsgBoxConstructor({
     el: document.createElement('div'),
   });
   document.body.appendChild(instance.$el);
@@ -24,7 +24,8 @@ const msgBox = (options = {}) => {
   });
 };
 
-export default function (Vue) {
+export default function () {
   // //添加全局API
+  // eslint-disable-next-line no-param-reassign
   Vue.prototype.$msgbox = msgBox;
 }
