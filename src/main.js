@@ -9,6 +9,7 @@ import Upload from '@/components/upload/index.js';
 import msgBox from '@/components/msgbox/index.js';
 import '@/plugins/toast/toast.css';
 import Toast from '@/plugins/toast/toast.js';
+import 'es6';
 
 Vue.use(progress);
 Vue.use(Upload);
