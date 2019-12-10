@@ -32,5 +32,10 @@ export default new Router({
       name: 'fileDownload',
       component: () => import('@/docs/vue/file.md'),
     },
+    {
+      path: '/live2d',
+      name: 'live2d',
+      component: () => import('@/docs/vue/live2d.md'),
+    },
   ],
 });
